@@ -11,4 +11,10 @@ router.post("/signup" ,
     body("phone").trim().isNumeric().withMessage("please enter only numbers").isLength(10).withMessage("please enter a phone with 10 digits"),
     body("name").trim().toLowerCase()
 ], authController.signup);
+
+router.post("/login" , [
+    body("email").isEmail().withMessage("please enter a valid mail")
+    .normalizeEmail(),
+    body("password").trim().isLength({min : 5}).withMessage("please enter a password with atleast 5 characters")
+], authController.login);
 module.exports = router;
