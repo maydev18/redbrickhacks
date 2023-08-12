@@ -93,7 +93,7 @@ exports.login = async (req , res , next) => {
             email : loadedUser.email,
             userId :loadedUser._id.toString()},
             "somesupersupersupersecret",
-            {expiresIn : "2h"}
+            {expiresIn : "12h"}
         );
         res.status(200).json({
             token : token,

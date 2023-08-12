@@ -14,5 +14,8 @@ router.post("/addproduct" , isAuth , [
 
 router.get("/gettechrequests" , isAuth , userController.gettechrequest);
 
+
 router.post("/addtechrequest" , isAuth , userController.postAddTechRequest);
+router.post("/addnewproduct" , isAuth , userController.addnewproduct);
+router.get("/products" , isAuth , userController.getnewproducts);
 module.exports = router;

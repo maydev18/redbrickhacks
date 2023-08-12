@@ -7,7 +7,7 @@ const productSchema = new Schema({
         required : true
     },
     name : {
-        type : Number,
+        type : String,
         required : true
     },
     userId : {
@@ -25,11 +25,11 @@ const productSchema = new Schema({
     },
     ratings : {
         type : Number,
-        required : true
+        // required : true
     },
     imageURL : {
-        type : string
+        type : String
     }
 });
 
-module.exports = mongoose.model("old product" , productSchema);
+module.exports = mongoose.model("new product" , productSchema);

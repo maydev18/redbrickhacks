@@ -2,7 +2,7 @@ const TechRequest = require("../models/techrequest.js");
 const User = require("../models/user.js");
 const OldProduct = require("../models/oldProduct.js");
 const {validationResult} = require("express-validator");
-
+const NewProduct = require("../models/newproduct.js");
 const checkErrors = (errors) => {
     if(errors.isEmpty()) return undefined;
     const err = new Error("wrong data entered");
@@ -74,6 +74,48 @@ exports.postAddTechRequest = async (req , res , next) => {
         res.status(201).json({
             message : "Request created",
             request : tr
+        })
+    }
+    catch(err){
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+}
+exports.addnewproduct = async (req , res , next) => {
+    try{
+        const type = req.body.type;
+        const name = req.body.name;
+        const price = req.body.price;
+        const userId = req.userId;
+        const description = req.body.description;
+        const prod = new NewProduct({
+            type : type,
+            name :  name,
+            price : price,
+            userId : userId,
+            description : description
+        })
+        await prod.save();
+        res.status(201).json({
+            message : "product created",
+            request : prod
+        })
+    }
+    catch(err){
+        if (!err.statusCode) {
+            err.statusCode = 500;
+        }
+        next(err);
+    }
+}
+exports.getnewproducts = async(req , res , next) => {
+    try{
+        const tr = await NewProduct.find();
+        res.status(201).json({
+            message : "products fetched",
+            products : tr
         })
     }
     catch(err){
