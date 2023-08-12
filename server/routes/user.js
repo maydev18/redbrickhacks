@@ -10,5 +10,9 @@ router.post("/addproduct" , isAuth , [
     body("address").trim().toLowerCase().isLength({min : 10}).withMessage("Please enter a complete address")
 ] , userController.addProduct);
 
-router.get("/get-products" , isAuth , userController.getProducts);
+// router.get("/getproducts" , isAuth , userController.getProducts);
+
+router.get("/gettechrequests" , isAuth , userController.gettechrequest);
+
+router.post("/addtechrequest" , isAuth , userController.postAddTechRequest);
 module.exports = router;
