@@ -12,6 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/auth" , require("./routes/auth"));
+app.use("/user" , require("./routes/user"));
 
 
 //error handler
